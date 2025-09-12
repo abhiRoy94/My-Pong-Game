@@ -1,3 +1,4 @@
+using Unity.Mathematics.Geometry;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -43,20 +44,24 @@ public class BallController : MonoBehaviour
                 // Calculate the normalized height difference between the collision and the player midpoint
                 float heightDifference = playerMidpoint.y - collisionPoint.y;
                 float normalizedDistance = heightDifference / (playerHeight / 2f);
-                
+
                 // Calculate the ball bounce angle
-                float bounceAngle = normalizedDistance * maxBounceAngle;
+                float bounceAngle = normalizedDistance * (maxBounceAngle * Mathf.Deg2Rad);
                 
                 // Get the current horizontal direction of the ball
                 float currentDirectionX = Mathf.Sign(_rb.linearVelocity.x);
                 float currentDirectionY = Mathf.Sign(_rb.linearVelocity.y);
                 
                 // Calculate the new ball speeds in the X and Y direction
-                Vector2 newVelocity = new Vector2(-currentDirectionX * Mathf.Cos(bounceAngle), 
-                                                  -currentDirectionY * Mathf.Sin(bounceAngle));
+
+                Vector2 newVelocity = new Vector2(-currentDirectionX * Mathf.Cos(bounceAngle), currentDirectionY * Mathf.Sin(bounceAngle));
                 //float ballVx = collisionVelocity.x * Mathf.Cos(bounceAngle);
-                //float ballVy = collisionVelocity.y * Mathf.Sin(bounceAngle);
-                _rb.linearVelocity = newVelocity * ballSpeed;
+                //float ballVy = collisionVelocity.y * -Mathf.Sin(bounceAngle);
+
+                Debug.Log("BallVx: " + newVelocity.x + ", BallVy: " + newVelocity.y);
+
+
+                _rb.linearVelocity = newVelocity.normalized * ballSpeed;
             }
         }
     }
