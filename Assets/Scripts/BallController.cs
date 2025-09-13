@@ -7,8 +7,9 @@ public class BallController : MonoBehaviour
 {
     public Rigidbody2D _rb;
     public BoxCollider2D _playerBoxCollider;
-    public float ballSpeed = 2.5f;
+    public float ballSpeed = 5f;
     public float maxBounceAngle = 75f;
+    public GameObject respawnPoint;
 
     private Vector2 _colliderSize;
 
@@ -20,12 +21,13 @@ public class BallController : MonoBehaviour
             _rb = GetComponent<Rigidbody2D>();
         }
         
-        _rb.linearVelocity = new Vector2(-1, -1).normalized * ballSpeed;
+        _rb.linearVelocity = new Vector2(-1, 0).normalized * ballSpeed;
     }
 
     // Allow the ball to bounce off player and walls
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // If the ball connects with the player (and enemy later)
         if (collision.collider.CompareTag("Player"))
         {
             Debug.Log("Hit the player!");
@@ -39,7 +41,6 @@ public class BallController : MonoBehaviour
 
                 // Determine the collision point, and collision velocity
                 Vector2 collisionPoint = collision.GetContact(0).point;
-                //Vector2 collisionVelocity = collision.GetContact(0).relativeVelocity;
 
                 // Calculate the normalized height difference between the collision and the player midpoint
                 float heightDifference = playerMidpoint.y - collisionPoint.y;
@@ -53,16 +54,45 @@ public class BallController : MonoBehaviour
                 float currentDirectionY = Mathf.Sign(_rb.linearVelocity.y);
                 
                 // Calculate the new ball speeds in the X and Y direction
-
                 Vector2 newVelocity = new Vector2(-currentDirectionX * Mathf.Cos(bounceAngle), currentDirectionY * Mathf.Sin(bounceAngle));
-                //float ballVx = collisionVelocity.x * Mathf.Cos(bounceAngle);
-                //float ballVy = collisionVelocity.y * -Mathf.Sin(bounceAngle);
 
-                Debug.Log("BallVx: " + newVelocity.x + ", BallVy: " + newVelocity.y);
-
-
+                // Update the ball's linear velocity
                 _rb.linearVelocity = newVelocity.normalized * ballSpeed;
             }
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("EnemyGoal"))
+        {
+            // Respawn the ball back to the starting point
+            Respawn();
+
+            // TODO: Handle player scoring
+
+        }
+        else if (collision.CompareTag("PlayerGoal"))
+        {
+            Debug.Log("Hit the player goal!");
+
+            // Respawn the ball back to the starting point
+            Respawn();
+
+            // TODO: Handle enemy scoring
+        }
+    }
+
+    void Respawn()
+    {
+        // Set the position of the ball back to the respawn point
+        _rb.transform.position = respawnPoint.transform.position;
+
+        // Create a random X and Y direction for the ball
+        int randomDirectionX = (Random.Range(0, 2) == 0) ? 1 : -1;
+        int randomDirectionY = (Random.Range(0, 2) == 0) ? 1 : -1;
+
+        // Reset the ball's velocity
+        _rb.linearVelocity = new Vector2(randomDirectionX, randomDirectionY).normalized * ballSpeed;
     }
 }
