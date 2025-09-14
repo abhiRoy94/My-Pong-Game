@@ -7,6 +7,7 @@ TagManager:
   - Wall
   - EnemyGoal
   - PlayerGoal
+  - Goal
   layers:
   - Default
   - TransparentFX

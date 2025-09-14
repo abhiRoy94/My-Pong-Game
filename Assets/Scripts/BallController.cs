@@ -10,8 +10,7 @@ public class BallController : MonoBehaviour
     public float ballSpeed = 5f;
     public float maxBounceAngle = 75f;
     public GameObject respawnPoint;
-
-    private Vector2 _colliderSize;
+    public PointCounter pointCounter;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -64,22 +63,16 @@ public class BallController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("EnemyGoal"))
+        if (collision.CompareTag("EnemyGoal") || collision.CompareTag("PlayerGoal"))
         {
-            // Respawn the ball back to the starting point
-            Respawn();
-
-            // TODO: Handle player scoring
-
-        }
-        else if (collision.CompareTag("PlayerGoal"))
-        {
-            Debug.Log("Hit the player goal!");
+            // Extra logging
+            Debug.Log("Hit the goal. Tag: " + collision.tag);
 
             // Respawn the ball back to the starting point
             Respawn();
 
-            // TODO: Handle enemy scoring
+            // Update the point system depending on the tag of the goal
+            pointCounter.ScorePoints(collision.tag);
         }
     }
 
