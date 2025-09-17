@@ -128,7 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 125339493}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Boundaries
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -165,12 +165,12 @@ GameObject:
   - component: {fileID: 324312381}
   - component: {fileID: 324312380}
   - component: {fileID: 324312382}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TopWall
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!212 &324312380
 SpriteRenderer:
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 447354350}
   - component: {fileID: 447354349}
   - component: {fileID: 447354348}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -694,7 +694,7 @@ GameObject:
   - component: {fileID: 633302954}
   - component: {fileID: 633302956}
   - component: {fileID: 633302955}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -779,7 +779,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 633302950}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -1002,7 +1002,7 @@ GameObject:
   - component: {fileID: 700691271}
   - component: {fileID: 700691270}
   - component: {fileID: 700691272}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerGoal
   m_TagString: EnemyGoal
   m_Icon: {fileID: 0}
@@ -1167,12 +1167,13 @@ GameObject:
   - component: {fileID: 740667631}
   - component: {fileID: 740667630}
   - component: {fileID: 740667632}
-  m_Layer: 0
+  - component: {fileID: 740667633}
+  m_Layer: 6
   m_Name: BottomWall
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!212 &740667630
 SpriteRenderer:
@@ -1290,6 +1291,33 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &740667633
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740667629}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &924777946
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,7 +1329,7 @@ GameObject:
   - component: {fileID: 924777948}
   - component: {fileID: 924777947}
   - component: {fileID: 924777949}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyGoal
   m_TagString: PlayerGoal
   m_Icon: {fileID: 0}
@@ -1735,7 +1763,7 @@ GameObject:
   - component: {fileID: 1815624547}
   - component: {fileID: 1815624546}
   - component: {fileID: 1815624545}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1840,7 +1868,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1815624544}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
