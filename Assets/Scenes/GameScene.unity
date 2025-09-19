@@ -323,7 +323,7 @@ MonoBehaviour:
   _rb: {fileID: 447354349}
   _playerBoxCollider: {fileID: 0}
   ballSpeed: 10
-  maxBounceAngle: 75
+  maxBounceAngle: 60
   respawnPoint: {fileID: 715872943}
   pointCounter: {fileID: 1658449353}
 --- !u!50 &447354349
@@ -797,7 +797,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 5
 --- !u!61 &633302954
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1073,7 +1073,7 @@ Transform:
   m_GameObject: {fileID: 700691269}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.05, y: 5.23, z: 0}
+  m_LocalPosition: {x: 9.26, y: 5.23, z: 0}
   m_LocalScale: {x: 0.6887149, y: 10.560249, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1400,7 +1400,7 @@ Transform:
   m_GameObject: {fileID: 924777946}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.13, y: 5.3500004, z: 0}
+  m_LocalPosition: {x: -9.37, y: 5.39, z: 0}
   m_LocalScale: {x: 0.6887149, y: 10.560249, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1886,7 +1886,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 5
 --- !u!212 &1815624549
 SpriteRenderer:
   m_ObjectHideFlags: 0
